@@ -1,6 +1,6 @@
 <?
 namespace Navigator\Db;
-
+use Navigator\Events\Events;
 
 class Db 
 {
@@ -17,12 +17,12 @@ class Db
         echo "<pre>";print_r($arParams);echo "</pre>";
 
         echo "Middle!";       
-        $result = Events::doEvent("main",'onActive',__CLASS__, __FUNCTION__, $arParams);
+        $result =  Events::doEvent("main",'onActive',__CLASS__, __FUNCTION__, $arParams);
         if($result) $arParams = $result;
         echo "<pre>";print_r($arParams);echo "</pre>";
 
         echo "End!";
-        $result = Events::doEvent("main",'onAfter',__CLASS__, __FUNCTION__, $arParams);
+        $result =  Events::doEvent("main",'onAfter',__CLASS__, __FUNCTION__, $arParams);
         if($result) $arParams = $result;   
         echo "<pre>";print_r($arParams);echo "</pre>";
     }
