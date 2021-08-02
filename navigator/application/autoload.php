@@ -67,18 +67,15 @@ class CClassLoader
      * @return null
      */
     private function includeClass($class)
-    {               
-        $name = str_replace("\\", "/", $class); 
-        $classesDir = "/local/php_interface/includes/classes/";
-        $classFile = $_SERVER["DOCUMENT_ROOT"] . $classesDir . $name . ".php";
-        if (file_exists($classFile)) {                     
+    {   
+        $name = str_replace("\\", "/", $class);        
+       prin($class);
+        if (file_exists($classFile = $_SERVER["DOCUMENT_ROOT"]."/local/php_interface/includes/classes/".$name .".php")) {                     
             require_once($classFile);
-        } else {           
-            $classesDir = "navigator/php_interface/includes/classes/";
-            $classFile = $_SERVER["DOCUMENT_ROOT"] . $classesDir . $name . ".php";
-            if (file_exists($classFile)) {                
-                require_once($classFile);
-            }
+        } else if(file_exists($classFile = $_SERVER["DOCUMENT_ROOT"]."navigator/application/classes/".$name .".php")){                         
+            require_once($classFile);            
+        } else if(file_exists($classFile = $_SERVER["DOCUMENT_ROOT"]."navigator/application/lib/".$name .".php")){                         
+            require_once($classFile);            
         }
     }
 

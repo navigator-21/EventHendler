@@ -1,5 +1,5 @@
 <?
-namespace Navigator\Events;
+namespace Navigator;
 
 class Events 
 {
